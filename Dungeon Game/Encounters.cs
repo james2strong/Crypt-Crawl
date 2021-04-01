@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Dungeon_Game
 {
-    class Encounters
+    public class Encounters
     {
         static Random rand = new Random();
         //Encounters Generic
@@ -23,7 +23,7 @@ namespace Dungeon_Game
         public static void BasicFightEncounter()
         {
             Console.Clear();
-            Console.WriteLine("You turn the corner and before you, you see a hulking beast...");
+            Console.WriteLine("You turn the corner and before you, you see an undead monster...");
             Console.ReadKey();
             Combat(true, "", 0, 0);
         }
@@ -57,8 +57,8 @@ namespace Dungeon_Game
             if (random)
             {
                 n = GetName();
-                p = rand.Next(1, 5);
-                h = rand.Next(1, 8);
+                p = Program.currentPlayer.GetPower();
+                h = Program.currentPlayer.GetHealth();
             }
             else
             {
@@ -117,7 +117,7 @@ namespace Dungeon_Game
                     {
                         Console.WriteLine("You use your crazy ninja moves to evade the " + n + " and you successfully escape!");
                         Console.ReadKey();
-                        //go to store
+                        Shop.LoadShop(Program.currentPlayer);
                     }
                 }
                 else if (input.ToLower() == "h" || input.ToLower() == "heal")
@@ -155,7 +155,7 @@ namespace Dungeon_Game
                 }
                 Console.ReadKey();
             }
-            int c = rand.Next(10, 50);
+            int c = Program.currentPlayer.GetCoins();
             Console.WriteLine("As you stand victorious over the " + n + ", its body dissolves into " + c + " gold coins.");
             Program.currentPlayer.coins += c;
             Console.ReadKey();
@@ -169,9 +169,9 @@ namespace Dungeon_Game
                 case 1:
                     return "Zombie";
                 case 2:
-                    return "Human Cultist";
+                    return "Ghost";
                 case 3:
-                    return "Grave Robber";              
+                    return "Ghoul";              
             }
             return "Human Rogue";
         }
