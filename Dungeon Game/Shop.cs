@@ -31,13 +31,14 @@ namespace Dungeon_Game
                 Console.WriteLine(" (P)otions:         $" + potionP);
                 Console.WriteLine(" (D)ifficulty Mod:  $" + difP);
                 Console.WriteLine("**************************");
-                Console.WriteLine("(E)xit");
+                Console.WriteLine(" (E)xit Shop");
+                Console.WriteLine(" (Q)uit Game");
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine(p.name + "'s Stats     ");
                 Console.WriteLine("**************************");
-                Console.WriteLine("Current Health: " + p.health);
-                Console.WriteLine("Coins:" + p.coins);
+                Console.WriteLine(" Current Health: " + p.health);
+                Console.WriteLine(" Coins:" + p.coins);
                 Console.WriteLine(" Weapon Strength: " + p.weaponValue);
                 Console.WriteLine(" Armor Toughness: " + p.armorValue);
                 Console.WriteLine(" Potions: " + p.potion);
@@ -60,6 +61,10 @@ namespace Dungeon_Game
                 else if (input == "d" || input == "difficulty mod")
                 {
                     TryBuy("dif", difP, p);
+                }
+                else if (input == "q" || input == "quit")
+                {
+                    Program.Quit();
                 }
                 else if (input == "e" || input == "exit")
                 {

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Text;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Dungeon_Game
 {
@@ -137,6 +139,7 @@ namespace Dungeon_Game
                         int potionV = 5;
                         Console.WriteLine("You gain " + potionV + " health.");
                         Program.currentPlayer.health += potionV;
+                        Program.currentPlayer.potion -= 1;
                         Console.WriteLine("As you were occupied, the " + n + " advanced and struck.");
                         int damage = (p / 2) - Program.currentPlayer.armorValue;
                         if (damage < 0)
