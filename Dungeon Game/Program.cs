@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Text;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -29,6 +26,7 @@ namespace Dungeon_Game
                 Encounters.RandomEncounter();
             }
         }
+        //Start new game
         static Player NewStart(int i)
         {
             Console.Clear();
@@ -44,19 +42,20 @@ namespace Dungeon_Game
             if (p.name == "")
                 Console.WriteLine("You can't even remember your own name...");
             else
-                Console.WriteLine("You know your name is " + p.name+".");
+                Console.WriteLine("After a moment of struggle, you remember your name is " + p.name+".");
             Console.ReadKey();
             Console.Clear();
-            Console.WriteLine("You grope around in the darkness until you find a door handle. You feel some resistance as");
+            Console.WriteLine("You search around in the darkness until you find a door handle. You feel some resistance as");
             Console.WriteLine("you turn the handle, but the rusty lock breaks with little effort. You see your captor");
             Console.WriteLine("standing with his back to you outside the door.");
             return p;
         }
+        //Exit game and save player
         public static void Quit()
         {
             Save();
             Environment.Exit(0);
-        }
+        }      
         public static void Save()
         {
             BinaryFormatter binForm = new BinaryFormatter();
@@ -65,7 +64,7 @@ namespace Dungeon_Game
             binForm.Serialize(file, currentPlayer);
             file.Close();
         }
-
+        //Load saved player
         public static Player Load(out bool newP)
         {
             newP = false;
@@ -88,14 +87,12 @@ namespace Dungeon_Game
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Choose your player:");
-
+                Print("Choose your player:", 60);
                 foreach (Player p in players)
                 {
                     Console.WriteLine(p.id + ": " + p.name);
                 }
-
-                Console.WriteLine("Please input player name or id (id:# or playername). Additionally, 'create' will start a new save.");                
+                Print("Please input player name or id (id:# or playername). Additionally, 'create' will start a new save.", 20);                
                 string[] data = Console.ReadLine().Split(':');
                 try
                 {
@@ -143,8 +140,20 @@ namespace Dungeon_Game
                     Console.WriteLine("Your id needs to be a number! Press any key to continue!");
                     Console.ReadKey();
                 }
+            }                        
+        }
+        //Text scrolling method
+        public static void Print(string text, int speed = 40)
+        {
+            //SoundPlayer soundPlayer = new SoundPlayer("sounds/name.wav");
+            //soundPlayer.PlayLooping();
+            foreach (char c in text)
+            { 
+                Console.Write(c);
+                System.Threading.Thread.Sleep(speed);
             }
-                        
+            //soundPlayer.Stop();
+            Console.WriteLine();
         }
     }
 }

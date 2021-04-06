@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Text;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Dungeon_Game
 {
     [Serializable]
     public class Player
-    {
-        
-
+    {    
         public string name;
         public int id;
         public int coins = 0;
