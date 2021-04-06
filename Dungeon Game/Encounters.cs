@@ -70,6 +70,7 @@ namespace Dungeon_Game
                 Console.WriteLine("|  (A)ttack  (D)efend    |");
                 Console.WriteLine("|  (R)un     (H)eal      |");
                 Console.WriteLine("***************************");
+                Console.WriteLine(" (Q)uit Game");
                 Console.WriteLine("Potions: " +Program.currentPlayer.potion+"   Health: "+Program.currentPlayer.health+"   Coins: "+Program.currentPlayer.coins);
                 string input = Console.ReadLine();
                 //Attack
@@ -143,6 +144,11 @@ namespace Dungeon_Game
                         Console.WriteLine("You lose " + damage + " health.");
                     }
                     Console.ReadKey();
+                }
+                //Quit in combat
+                else if (input == "q" || input == "quit")
+                {
+                    Program.Quit();
                 }
                 //Death Code
                 if (Program.currentPlayer.health <= 0)
