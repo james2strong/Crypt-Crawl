@@ -34,6 +34,30 @@ namespace Dungeon_Game
             Console.WriteLine("Welcome to the Dungeon Game!");
             Console.WriteLine("Character Name: ");
             p.name = Console.ReadLine();
+            Print("Class: (M)age  (A)rcher  (W)arrior");
+            bool flag = false;
+            while (flag == false)
+            {
+                flag = true;
+                string input = Console.ReadLine().ToLower();
+                if (input == "mage" || input == "m")
+                {
+                    p.currentClass = Player.PlayerClass.Mage;
+                }
+                else if(input == "archer" || input == "a")
+                {
+                    p.currentClass = Player.PlayerClass.Archer;
+                }
+                else if(input == "warrior" || input == "w")
+                {
+                    p.currentClass = Player.PlayerClass.Warrior;
+                }
+                else
+                {
+                    Console.WriteLine("Please choose an existing class!");
+                    flag = false;
+                }
+            }
             p.id = i;
             Console.Clear();
             Console.WriteLine("You awake in a cold, dark stone room. You feel dazed and are having trouble remembering");
@@ -144,16 +168,25 @@ namespace Dungeon_Game
         }
         //Text scrolling method
         public static void Print(string text, int speed = 40)
-        {
-            //SoundPlayer soundPlayer = new SoundPlayer("sounds/name.wav");
-            //soundPlayer.PlayLooping();
+        {            
             foreach (char c in text)
             { 
                 Console.Write(c);
                 System.Threading.Thread.Sleep(speed);
-            }
-            //soundPlayer.Stop();
+            }            
             Console.WriteLine();
+        }
+
+        public static void ProgressBar(string fillerCar, string backgroundChar, decimal value, int size)
+        {
+            int dif = (int)(value * size);
+            for(int i=0; i<size; i++)
+            {
+                if (i < dif)
+                    Console.Write(fillerCar);
+                else
+                    Console.Write(backgroundChar);
+            }
         }
     }
 }
