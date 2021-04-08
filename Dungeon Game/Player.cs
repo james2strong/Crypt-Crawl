@@ -32,8 +32,8 @@ namespace Dungeon_Game
         }
         public int GetCoins()
         {
-            int upper = ((15 * mods + 50) + Program.currentPlayer.level);
-            int lower = ((10 * mods + 10) + Program.currentPlayer.level);
+            int upper = ((15 * mods + 50) + (Program.currentPlayer.level * 3));
+            int lower = ((10 * mods + 10) + (Program.currentPlayer.level * 3));
             return Program.rand.Next(lower, upper);
         }
         public int GetXP()

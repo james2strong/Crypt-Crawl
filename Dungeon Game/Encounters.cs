@@ -39,7 +39,26 @@ namespace Dungeon_Game
                 Console.WriteLine("You open a door and the smell of rot assaults your senses.  As you swallow several times to avoid retching, ");
                 Console.WriteLine("your eyes see movement accross the room.");
                 Console.ReadKey();
-                Combat(false, "Mummy", 1 + Program.currentPlayer.level, 2 + Program.currentPlayer.weaponValue);
+                Combat(false, "Mummy", Program.currentPlayer.level, Program.currentPlayer.mods + Program.currentPlayer.level);
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("You hope this door leads to an exit, but there is something waiting for you in the dark.");
+                Console.ReadKey();
+                Combat(true, "", 0, 0);
+            }
+        }
+        public static void LichEncounter()
+        {
+            if (Program.currentPlayer.level >= 5)
+            {
+                Console.Clear();
+                Console.WriteLine("You find a laboratory with many tables scattered around the room.  Different tables are covered with books, beakers over flames, or ");
+                Console.WriteLine("dead bodies that have been experimented on. A robed figure turns to face you, 'Thank you for volunteering'.");
+                Console.ReadKey();
+                Combat(false, "Lich", Program.currentPlayer.level + Program.currentPlayer.armorValue, Program.currentPlayer.mods + Program.currentPlayer.level + 
+                    Program.currentPlayer.weaponValue);
             }
             else
             {
@@ -52,7 +71,7 @@ namespace Dungeon_Game
         //Encounter Tools
         public static void RandomEncounter()
         {
-            switch (rand.Next(0,3))
+            switch (rand.Next(0,4))
             {
                 case 0:
                     UndeadFightEncounter();
@@ -62,7 +81,10 @@ namespace Dungeon_Game
                     break;
                 case 2:
                     MummyEncounter();
-                    break;                  
+                    break;
+                case 3:
+                    LichEncounter();
+                    break;
             }
         }
         public static void Combat(bool random, string name, int power, int health)
