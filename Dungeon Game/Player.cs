@@ -16,7 +16,6 @@ namespace Dungeon_Game
         public int potion = 5;
         public int weaponValue = 1;
         public int mods = 0;
-
         public enum PlayerClass { Mage, Archer, Warrior };
         public PlayerClass currentClass = PlayerClass.Warrior;
         public int GetHealth()
@@ -33,8 +32,8 @@ namespace Dungeon_Game
         }
         public int GetCoins()
         {
-            int upper = (15 * mods + 50);
-            int lower = (10 * mods + 10);
+            int upper = ((15 * mods + 50) + Program.currentPlayer.level);
+            int lower = ((10 * mods + 10) + Program.currentPlayer.level);
             return Program.rand.Next(lower, upper);
         }
         public int GetXP()
@@ -61,7 +60,7 @@ namespace Dungeon_Game
             {
                 xp -= GetLevelUpValue();
                 level++;
-            }
+            }            
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Program.Print("Congrats! You are now level " + level + "!!!");
             Console.ResetColor();

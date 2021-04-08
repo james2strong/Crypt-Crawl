@@ -47,7 +47,6 @@ namespace Dungeon_Game
                 Program.ProgressBar("+", "-", (decimal)p.xp / (decimal)p.GetLevelUpValue(), 25);
                 Console.WriteLine("]");
 
-
                 Console.WriteLine("Level: " + p.level);
                 Console.WriteLine("**************************");
 

@@ -31,10 +31,28 @@ namespace Dungeon_Game
             Console.ReadKey();
             Combat(false, "Necromancer", 4, 2);
         }
+        public static void MummyEncounter()
+        {
+            if(Program.currentPlayer.level >= 2)
+            {
+                Console.Clear();
+                Console.WriteLine("You open a door and the smell of rot assaults your senses.  As you swallow several times to avoid retching, ");
+                Console.WriteLine("your eyes see movement accross the room.");
+                Console.ReadKey();
+                Combat(false, "Mummy", 1 + Program.currentPlayer.level, 2 + Program.currentPlayer.weaponValue);
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("You hope this door leads to an exit, but there is something waiting for you in the dark.");
+                Console.ReadKey();
+                Combat(true, "", 0, 0);
+            }
+        }
         //Encounter Tools
         public static void RandomEncounter()
         {
-            switch (rand.Next(0,2))
+            switch (rand.Next(0,3))
             {
                 case 0:
                     UndeadFightEncounter();
@@ -42,6 +60,9 @@ namespace Dungeon_Game
                 case 1:
                     NecromancerEncounter();
                     break;
+                case 2:
+                    MummyEncounter();
+                    break;                  
             }
         }
         public static void Combat(bool random, string name, int power, int health)
@@ -64,7 +85,7 @@ namespace Dungeon_Game
             while(h > 0)
             {
                 Console.Clear();
-                Console.WriteLine(n);
+                Console.WriteLine("Your advisary is a " + n + ".");
                 Console.WriteLine(p + "/" + h);
                 Console.WriteLine("***************************");
                 Console.WriteLine("|  (A)ttack  (D)efend    |");
@@ -75,9 +96,22 @@ namespace Dungeon_Game
                 string input = Console.ReadLine();
                 //Attack
                 if (input.ToLower() == "a" || input.ToLower() == "attack")
-                {                    
-                    Console.WriteLine("Quick as a cat you rush forward, your weapon dancing in your hands! ");
-                    Console.WriteLine("As you attack, the " + n + " strikes out at you as you pass.");
+                {
+                    if(Program.currentPlayer.currentClass == Player.PlayerClass.Warrior)
+                    {
+                        Console.WriteLine("You raise your weapon in both hands and strike down at the " + n + " with a mighty blow!");
+                        Console.WriteLine("The " + n + "delivers its own attack at the same time.");
+                    }
+                    else if(Program.currentPlayer.currentClass == Player.PlayerClass.Mage)
+                    {
+                        Console.WriteLine("Your hands come up and bolt of arcane energy blasts into the " + n + "'s chest.");
+                        Console.WriteLine("The " + n + " delivers its own attack at the same time.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Quick as a cat you draw your bow and loose and arrow at the " + n + ".");
+                        Console.WriteLine("The " + n + " delivers its own attack at the same time.");
+                    }                    
                     int damage = p - Program.currentPlayer.armorValue;
                     if (damage < 0)
                         damage = 0;
@@ -108,8 +142,7 @@ namespace Dungeon_Game
                         if (damage < 0)
                             damage = 0;
                         Console.WriteLine("You lose " + damage + " health and are unable to escape.");
-                        Program.currentPlayer.health -= damage;
-                        Console.ReadKey();
+                        Program.currentPlayer.health -= damage;                        
                     }
                     else
                     {
@@ -142,8 +175,7 @@ namespace Dungeon_Game
                         if (damage < 0)
                             damage = 0;
                         Console.WriteLine("You lose " + damage + " health.");
-                    }
-                    Console.ReadKey();
+                    }                    
                 }
                 //Quit in combat
                 else if (input == "q" || input == "quit")

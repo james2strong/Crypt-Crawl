@@ -176,7 +176,7 @@ namespace Dungeon_Game
             }            
             Console.WriteLine();
         }
-
+        //Level progress bar
         public static void ProgressBar(string fillerCar, string backgroundChar, decimal value, int size)
         {
             int dif = (int)(value * size);
