@@ -11,7 +11,7 @@ namespace Dungeon_Game
         //Encounters
         public static void FirstEncounter()
         {
-            Console.WriteLine("You quietly open the door and grab a sword off a nearby rack. You charge toward your captor.");
+            Console.WriteLine("You quietly open the door and grab a weapon off a nearby rack. You charge toward your captor.");
             Console.WriteLine("He turns...");
             Console.ReadKey();
             Combat(false, "Human Rogue", 1, 4);
@@ -63,7 +63,7 @@ namespace Dungeon_Game
             else
             {
                 Console.Clear();
-                Console.WriteLine("You hope this door leads to an exit, but there is something waiting for you in the dark.");
+                Console.WriteLine("You are getting disoriented by the twists and turns of these corridors. The creatures don't have the same problem!");
                 Console.ReadKey();
                 Combat(true, "", 0, 0);
             }
@@ -222,9 +222,10 @@ namespace Dungeon_Game
 
             if (Program.currentPlayer.CanLevelUp())
             { 
-                Program.currentPlayer.LevelUp(); 
+                Program.currentPlayer.LevelUp();
+                Program.currentPlayer.health += 15;
+                Program.currentPlayer.coins += 100;
             }
-
             Console.ReadKey();
         }
         public static string GetName()

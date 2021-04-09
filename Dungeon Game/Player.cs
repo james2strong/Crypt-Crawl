@@ -53,16 +53,16 @@ namespace Dungeon_Game
             else
                 return false;
         }
-
         public void LevelUp()
-        {
+        {            
             while(CanLevelUp())
             {
                 xp -= GetLevelUpValue();
-                level++;
+                level++;                
             }            
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Program.Print("Congrats! You are now level " + level + "!!!");
+            Program.Print("You gain 15 health and 100 coins!");
             Console.ResetColor();
         }
     }
