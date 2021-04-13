@@ -6,16 +6,6 @@ namespace Dungeon_Game
     {
         static readonly Random rand = new Random();
         //Encounters Generic
-
-
-        //Encounters
-        public static void FirstEncounter()
-        {
-            Console.WriteLine("You quietly open the door and grab a weapon off a nearby rack. You charge toward your captor.");
-            Console.WriteLine("He turns...");
-            Console.ReadKey();
-            Combat(false, "Human Rogue", 1, 4);
-        }
         public static void UndeadFightEncounter()
         {
             Console.Clear();
@@ -23,6 +13,14 @@ namespace Dungeon_Game
             Console.ReadKey();
             Combat(true, "", 0, 0);
         }
+        //Encounters
+        public static void FirstEncounter()
+        {
+            Console.WriteLine("You quietly open the door and grab a weapon off a nearby rack. You charge toward your captor.");
+            Console.WriteLine("He turns...");
+            Console.ReadKey();
+            Combat(false, "Human Rogue", 1, 4);
+        }       
         public static void NecromancerEncounter()
         {
             Console.Clear();
@@ -137,7 +135,14 @@ namespace Dungeon_Game
                     int damage = p - Program.currentPlayer.armorValue;
                     if (damage < 0)
                         damage = 0;
-                    int attack = rand.Next(0, Program.currentPlayer.weaponValue) + rand.Next(1, 4) + ((Program.currentPlayer.currentClass == Player.PlayerClass.Warrior) ? 3:0);                    
+                    int attack = rand.Next(0, Program.currentPlayer.weaponValue) + rand.Next(1, (Program.currentPlayer.level)) + ((Program.currentPlayer.currentClass == Player.PlayerClass.Warrior) ? 3:0);                    
+                    if(attack >= ((Program.currentPlayer.level) + 1))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("You find a weak spot in the" + n + "'s defenses! You have scored a critical hit and delt " + attack + " damage! You also suffer " + damage + " damage.");
+                        Console.ResetColor();
+                    }
+                    else
                     Console.WriteLine("You lose " + damage + " health and deal " + attack + " damage.");
                     Program.currentPlayer.health -= damage;
                     h -= attack;

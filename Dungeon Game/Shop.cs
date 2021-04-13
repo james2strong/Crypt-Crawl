@@ -41,12 +41,10 @@ namespace Dungeon_Game
                 Console.WriteLine(" Armor Toughness: " + p.armorValue);
                 Console.WriteLine(" Potions: " + p.potion);
                 Console.WriteLine(" Difficulty Mods: " + p.mods);
-
                 Console.WriteLine("Xp:");
                 Console.Write("[");
                 Program.ProgressBar("+", "-", (decimal)p.xp / (decimal)p.GetLevelUpValue(), 25);
                 Console.WriteLine("]");
-
                 Console.WriteLine("Level: " + p.level);
                 Console.WriteLine("**************************");
 
@@ -89,7 +87,6 @@ namespace Dungeon_Game
                     p.armorValue++;
                 else if (item == "dif")
                     p.mods++;
-
                 p.coins -= cost;
             }
             else
