@@ -49,7 +49,7 @@ namespace Dungeon_Game
         }
         public static void LichEncounter()
         {
-            if (Program.currentPlayer.level >= 5)
+            if (Program.currentPlayer.level >= 4)
             {
                 Console.Clear();                
                 Console.WriteLine("You find a laboratory with many tables scattered around the room.  Different tables are covered with books, beakers over flames, or ");
@@ -67,6 +67,60 @@ namespace Dungeon_Game
             }
         }
         //Encounter Tools
+        public static void RandomMageAttack()
+        {
+            switch (rand.Next(0,4))
+            {
+                case 0:
+                    Console.WriteLine("You speak strange words and raise your hands. A bold of arcane energy jumps from your fingers.");
+                    break;
+                case 1:
+                    Console.WriteLine("You bring your wand up and point it at your enemy. Magic missles streak forward.");
+                    break;
+                case 2:
+                    Console.WriteLine("The top of your staff glows bright red as a stream of fire engulfs your target.");
+                    break;
+                case 3:
+                    Console.WriteLine("When you snap your fingers a bolt of lightning connects you to your target.");
+                    break;
+            }
+        }
+        public static void RandomWarriorAttack()
+        {
+            switch (rand.Next(0, 4))
+            {
+                case 0:
+                    Console.WriteLine("Your giant weapon drips with gore as you swing down on your enemy's head.");
+                    break;
+                case 1:
+                    Console.WriteLine("With a mighty backstroke with your weapon bites deeply into your target's flank.");
+                    break;
+                case 2:
+                    Console.WriteLine("You feint to the left to make them drop their guard on the right, you hear a crunch of bone.");
+                    break;
+                case 3:
+                    Console.WriteLine("A huge uppercut nearly takes the head off your opponent.");
+                    break;
+            }
+        }
+        public static void RandomArcherAttack()
+        {
+            switch (rand.Next(0, 4))
+            {
+                case 0:
+                    Console.WriteLine("Pulling the bow string taut, you aim for an eye and release the arrow.");
+                    break;
+                case 1:
+                    Console.WriteLine("You take careful aim and hope this thing has a heart to pierce.");
+                    break;
+                case 2:
+                    Console.WriteLine("As quick as thought, you fire and reload hoping your target stays down.");
+                    break;
+                case 3:
+                    Console.WriteLine("Can you fire two arrows at once, you ask yourself. It's a good time to find out!");
+                    break;
+            }
+        }
         public static void RandomEncounter()
         {
             switch (rand.Next(0,4))
@@ -119,18 +173,18 @@ namespace Dungeon_Game
                 {
                     if(Program.currentPlayer.currentClass == Player.PlayerClass.Warrior)
                     {
-                        Console.WriteLine("You raise your weapon in both hands and strike down at the " + n + " with a mighty blow!");
-                        Console.WriteLine("The " + n + " delivers its own attack at the same time.");
+                        RandomWarriorAttack();
+                        Console.WriteLine("As you step in for the kill, the " + n + " delivers its own attack.");
                     }
                     else if(Program.currentPlayer.currentClass == Player.PlayerClass.Mage)
                     {
-                        Console.WriteLine("Your hands come up and bolt of arcane energy blasts into the " + n + "'s chest.");
+                        RandomMageAttack();
                         Console.WriteLine("The " + n + " delivers its own attack at the same time.");
                     }
                     else
                     {
-                        Console.WriteLine("Quick as a cat you draw your bow and loose and arrow at the " + n + ".");
-                        Console.WriteLine("The " + n + " delivers its own attack at the same time.");
+                        RandomArcherAttack();
+                        Console.WriteLine("The " + n + " pulls the arrow from its body and stabs back at you.");
                     }                    
                     int damage = p - Program.currentPlayer.armorValue;
                     if (damage < 0)

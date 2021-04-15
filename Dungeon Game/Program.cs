@@ -106,7 +106,6 @@ namespace Dungeon_Game
                 file.Close();
                 players.Add(player);
             }
-
             idCount = players.Count;
 
             while (true)
@@ -204,7 +203,6 @@ namespace Dungeon_Game
             Console.ResetColor();
             Console.WriteLine();
             Console.WriteLine();
-
         }
     }
 }
