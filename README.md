@@ -8,7 +8,7 @@ Feature list:
 
       --The master loop in Program.cs starting on line 24 runs the Encounters until the player chooses to quit the game or run away and arrive in the shop. You will continue to 
       get random fights until you quit or die. Use those healing potions! There are four different encounters at this time, but two of them are unlocked at character levels 2 
-      and 5.
+      and 4.
       
   2. Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program:
   3. Implement a log that records errors, invalid inputs, or other important events and writes them to a text file:
