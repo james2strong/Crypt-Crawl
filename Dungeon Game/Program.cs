@@ -31,7 +31,8 @@ namespace Dungeon_Game
         {
             Console.Clear();
             Player p = new Player();
-            Console.WriteLine("Welcome to the Dungeon Game!");
+            //GetDate();
+            Console.WriteLine("Welcome to the Crypt Crawl!");
             Console.WriteLine("Character Name: ");
             p.name = Console.ReadLine();
             Print("Class: (M)age  (A)rcher  (W)arrior");
@@ -111,6 +112,8 @@ namespace Dungeon_Game
             while (true)
             {
                 Console.Clear();
+                GetDate();
+                Print("Welcome to the Crypt Crawl!", 20);
                 Print("Choose your player:", 60);
                 foreach (Player p in players)
                 {
@@ -187,6 +190,21 @@ namespace Dungeon_Game
                 else
                     Console.Write(backgroundChar);
             }
+        }
+        //Display time until Christmas
+        public static void GetDate()
+        {            
+            DateTime daysLeft = DateTime.Parse("12/25/2021 12:00:01 AM");
+            DateTime startDate = DateTime.Now;
+            
+            TimeSpan t = daysLeft - startDate;
+            string countDown = string.Format("{0} Days, {1} Hours, {2} Minutes, {3} Seconds", t.Days, t.Hours, t.Minutes, t.Seconds);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("There are " + countDown + " until Christmas.", 10);
+            Console.ResetColor();
+            Console.WriteLine();
+            Console.WriteLine();
+
         }
     }
 }

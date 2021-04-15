@@ -22,6 +22,7 @@ namespace Dungeon_Game
                 weaponP = 100 * p.weaponValue;
                 difP = 300 + 100 * p.mods;
                 Console.Clear();
+                Program.GetDate();
                 Console.WriteLine("          Shop        ");
                 Console.WriteLine("**************************");
                 Console.WriteLine(" (W)eapon:          $" + weaponP);

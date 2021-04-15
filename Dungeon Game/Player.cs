@@ -65,5 +65,5 @@ namespace Dungeon_Game
             Program.Print("You gain 15 health and 100 coins!");
             Console.ResetColor();
         }
-    }
+    }    
 }

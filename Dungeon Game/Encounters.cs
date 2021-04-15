@@ -8,7 +8,7 @@ namespace Dungeon_Game
         //Encounters Generic
         public static void UndeadFightEncounter()
         {
-            Console.Clear();
+            Console.Clear();            
             Console.WriteLine("While looking for a way out, you turn the corner before you and see an undead monster...");
             Console.ReadKey();
             Combat(true, "", 0, 0);
@@ -19,11 +19,11 @@ namespace Dungeon_Game
             Console.WriteLine("You quietly open the door and grab a weapon off a nearby rack. You charge toward your captor.");
             Console.WriteLine("He turns...");
             Console.ReadKey();
-            Combat(false, "Human Rogue", 1, 4);
+            Combat(false, "Crypt Keeper", 1, 4);
         }       
         public static void NecromancerEncounter()
         {
-            Console.Clear();
+            Console.Clear();            
             Console.WriteLine("The hallway ends at a door. The door slowly creaks open as you peer into the dark room. You see a tall ");
             Console.WriteLine("man with a long dark beard looking at a large tome.");
             Console.ReadKey();
@@ -33,7 +33,7 @@ namespace Dungeon_Game
         {
             if(Program.currentPlayer.level >= 2)
             {
-                Console.Clear();
+                Console.Clear();                
                 Console.WriteLine("You open a door and the smell of rot assaults your senses.  As you swallow several times to avoid retching, ");
                 Console.WriteLine("your eyes see movement accross the room.");
                 Console.ReadKey();
@@ -41,7 +41,7 @@ namespace Dungeon_Game
             }
             else
             {
-                Console.Clear();
+                Console.Clear();                
                 Console.WriteLine("You hope this door leads to an exit, but there is something waiting for you in the dark.");
                 Console.ReadKey();
                 Combat(true, "", 0, 0);
@@ -51,7 +51,7 @@ namespace Dungeon_Game
         {
             if (Program.currentPlayer.level >= 5)
             {
-                Console.Clear();
+                Console.Clear();                
                 Console.WriteLine("You find a laboratory with many tables scattered around the room.  Different tables are covered with books, beakers over flames, or ");
                 Console.WriteLine("dead bodies that have been experimented on. A robed figure turns to face you, 'Thank you for volunteering'.");
                 Console.ReadKey();
@@ -60,7 +60,7 @@ namespace Dungeon_Game
             }
             else
             {
-                Console.Clear();
+                Console.Clear();                
                 Console.WriteLine("You are getting disoriented by the twists and turns of these corridors. The creatures don't have the same problem!");
                 Console.ReadKey();
                 Combat(true, "", 0, 0);
@@ -104,7 +104,7 @@ namespace Dungeon_Game
             }
             while(h > 0)
             {
-                Console.Clear();
+                Console.Clear();                
                 Console.WriteLine("Your advisary is a " + n + ".");
                 Console.WriteLine(p + "/" + h);
                 Console.WriteLine("***************************");
@@ -120,7 +120,7 @@ namespace Dungeon_Game
                     if(Program.currentPlayer.currentClass == Player.PlayerClass.Warrior)
                     {
                         Console.WriteLine("You raise your weapon in both hands and strike down at the " + n + " with a mighty blow!");
-                        Console.WriteLine("The " + n + "delivers its own attack at the same time.");
+                        Console.WriteLine("The " + n + " delivers its own attack at the same time.");
                     }
                     else if(Program.currentPlayer.currentClass == Player.PlayerClass.Mage)
                     {
@@ -139,7 +139,7 @@ namespace Dungeon_Game
                     if(attack >= ((Program.currentPlayer.level) + 1))
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("You find a weak spot in the" + n + "'s defenses! You have scored a critical hit and delt " + attack + " damage! You also suffer " + damage + " damage.");
+                        Console.WriteLine("You find a weak spot in the " + n + "'s defenses! You have scored a critical hit and delt " + attack + " damage! You also suffer " + damage + " damage.");
                         Console.ResetColor();
                     }
                     else
@@ -193,7 +193,7 @@ namespace Dungeon_Game
                     else
                     {
                         Console.WriteLine("You reach into your bag and pull out a glowing red flask. You take a long drink.");
-                        int potionV = 5 + ((Program.currentPlayer.currentClass==Player.PlayerClass.Mage)?+4:0);
+                        int potionV = 5 + ((Program.currentPlayer.currentClass == Player.PlayerClass.Mage)?+4:0);
                         Console.WriteLine("You gain " + potionV + " health.");
                         Program.currentPlayer.health += potionV;
                         Program.currentPlayer.potion -= 1;
@@ -241,7 +241,7 @@ namespace Dungeon_Game
                 1 => "Zombie",
                 2 => "Ghost",
                 3 => "Ghoul",
-                _ => "Human Rogue",
+                _ => "Crypt Keeper",
             };
         }
     }
