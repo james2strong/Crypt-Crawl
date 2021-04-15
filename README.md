@@ -14,7 +14,7 @@ Feature list:
 
 
       --The player class is Serializable. When you choose to exit the game from either the shop or combat, your charater will be saved in a file created by Program.cs lines 
-        84-90. The load function starts is on Program.cs lines 93-110. After the first time you play the game, you can load characters off the list of saved characters. Try
+        84-90. The load function starts on Program.cs lines 93-110. After the first time you play the game, you can load characters off the list of saved characters. Try
         making one of each character class and playing a few levels of each. As long as you don't die, you can load them off the list of saved characters.
         
   4. Calculate and display data based on an external factor (ex: get the current date, and display how many days remaining until some event):
