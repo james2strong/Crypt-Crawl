@@ -32,7 +32,17 @@ namespace Dungeon_Game
             Console.Clear();
             Player p = new Player();
             //GetDate();
-            Console.WriteLine("Welcome to the Crypt Crawl!");
+            Console.WriteLine("Welcome to");
+            Console.WriteLine(@"
+ _____                  _     _____                    _  
+/  __ \                | |   /  __ \                  | | 
+| /  \/_ __ _   _ _ __ | |_  | /  \/_ __ __ ___      _| | 
+| |   | '__| | | | '_ \| __| | |   | '__/ _` \ \ /\ / / | 
+| \__/\ |  | |_| | |_) | |_  | \__/\ | | (_| |\ V  V /| | 
+ \____/_|   \__, | .__/ \__|  \____/_|  \__,_| \_/\_/ |_| 
+             __/ | |                                      
+            |___/|_|                                      
+");
             Console.WriteLine("Character Name: ");
             p.name = Console.ReadLine();
             Print("Class: (M)age  (A)rcher  (W)arrior");
@@ -112,7 +122,17 @@ namespace Dungeon_Game
             {
                 Console.Clear();
                 GetDate();
-                Print("Welcome to the Crypt Crawl!", 20);
+                Print("Welcome to", 20);
+                Console.WriteLine(@"
+ _____                  _     _____                    _  
+/  __ \                | |   /  __ \                  | | 
+| /  \/_ __ _   _ _ __ | |_  | /  \/_ __ __ ___      _| | 
+| |   | '__| | | | '_ \| __| | |   | '__/ _` \ \ /\ / / | 
+| \__/\ |  | |_| | |_) | |_  | \__/\ | | (_| |\ V  V /| | 
+ \____/_|   \__, | .__/ \__|  \____/_|  \__,_| \_/\_/ |_| 
+             __/ | |                                      
+            |___/|_|                                      
+");
                 Print("Choose your player:", 60);
                 foreach (Player p in players)
                 {
