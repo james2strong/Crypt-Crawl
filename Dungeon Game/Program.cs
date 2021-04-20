@@ -32,7 +32,7 @@ namespace Dungeon_Game
             Console.Clear();
             Player p = new Player();
             //GetDate();
-            Console.WriteLine("Welcome to");
+            Console.WriteLine("Welcome to:");
             Console.WriteLine(@"
  _____                  _     _____                    _  
 /  __ \                | |   /  __ \                  | | 
@@ -122,7 +122,7 @@ namespace Dungeon_Game
             {
                 Console.Clear();
                 GetDate();
-                Print("Welcome to", 20);
+                Print("Welcome to:", 20);
                 Console.WriteLine(@"
  _____                  _     _____                    _  
 /  __ \                | |   /  __ \                  | | 

@@ -247,7 +247,7 @@ namespace Dungeon_Game
                     else
                     {
                         Console.WriteLine("You reach into your bag and pull out a glowing red flask. You take a long drink.");
-                        int potionV = 5 + ((Program.currentPlayer.currentClass == Player.PlayerClass.Mage)?+4:0);
+                        int potionV = 5 + ((Program.currentPlayer.currentClass == Player.PlayerClass.Mage)?+4:0) + (Program.currentPlayer.mods);
                         Console.WriteLine("You gain " + potionV + " health.");
                         Program.currentPlayer.health += potionV;
                         Program.currentPlayer.potion -= 1;
@@ -282,8 +282,8 @@ namespace Dungeon_Game
             if (Program.currentPlayer.CanLevelUp())
             { 
                 Program.currentPlayer.LevelUp();
-                Program.currentPlayer.health += 15;
-                Program.currentPlayer.coins += 100;
+                Program.currentPlayer.health += 15 + (Program.currentPlayer.level);
+                Program.currentPlayer.coins += 100 + (Program.currentPlayer.level);
             }
             Console.ReadKey();
         }
